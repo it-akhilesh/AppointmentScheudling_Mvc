@@ -1,5 +1,6 @@
 using AppointmentScheudling.Data;
 using AppointmentScheudling.Models;
+using AppointmentScheudling.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -14,6 +15,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     
 
     );
+builder.Services.AddTransient<IAppointmentService, AppointmentService>();
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<ApplicationDbContext>();
 
 var app = builder.Build();
