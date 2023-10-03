@@ -4,12 +4,14 @@
 
 function InitializeCalendar() {
     try {
-        $('#calendar').fullCalendar({
-            timezone: false,
-            header: {
+
+        var calendarE1 = document.getElementById('calendar');
+        var calendar = new FullCalendar.Calendar(calendarE1, {
+            initialView: 'dayGridMonth'
+            headerToolbar: {
                 left: 'prev,next,today',
                 center: 'title',
-                right: 'month,agendaWeek,agendaDay'
+                right: 'dayGridMonth,timeGridWeek,timeGridDay'
             },
             Selection: true,
             editable: false,
@@ -17,6 +19,8 @@ function InitializeCalendar() {
                 onShowModal(event, null);
             }
         });
+        calendar.render();
+
     }
     catch (e) {
         alert(e);
