@@ -12,11 +12,15 @@
                     </div>
                     <div class="form-group">
                         <label for="description">Descriptions</label>
-                        <textarea typeof="text" class="form-control" id="title"></textarea>
+                        <textarea typeof="text" class="form-control" id="description"></textarea>
                     </div>
                     <div class="form-group">
                         <label for="title">Select Patient</label>
                         <select id="patientId" asp-items="@(new SelectList(ViewBag.PatientList,"Id","Name"))" class="form-control"></select>
+                    </div>
+                    <div class="form-group">
+                        <label for="appointmentDate">Start Date Time</label>
+                        <input class="form-control" id="appointmentDate"/>
                     </div>
                     <div class="form-group">
                         <label for="title">Duration</label>
@@ -26,7 +30,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" onclick="onCloseModel();">Close</button>
-                    <button type="button" id="btnSubmit"class="btn btn-success" onclick="onCloseModel();">Submit</button>
+                    <button type="button" id="btnSubmit" class="btn btn-success" onclick="onSubmitform();">Submit</button>
                     
                 </div>
             </form>

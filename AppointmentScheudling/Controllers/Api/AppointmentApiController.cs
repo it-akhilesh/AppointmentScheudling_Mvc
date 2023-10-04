@@ -1,5 +1,6 @@
 ﻿using AppointmentScheudling.Models.ViewModels;
 using AppointmentScheudling.Services;
+using AppointmentScheudling.Utility;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
@@ -27,7 +28,26 @@ namespace AppointmentScheudling.Controllers.Api
         [Route("SaveCalendarData")]
         public IActionResult SaveCalendarData(AppointmentVM data)
         {
-            return View();
+            CommonResponse<int> commonResponse = new CommonResponse<int>();
+            try
+            {
+                commonResponse.status = _appointmentService.AddUpdate(data).Result;
+                if(commonResponse.status == 1)
+                {
+                    commonResponse.message = Helper.appointmentUpdated;
+                }
+                if(commonResponse.status == 2)
+                {
+                    commonResponse.message = Helper.appointmentAdded;
+                }
+            }
+            catch (Exception e)
+            {
+                commonResponse.message = e.Message;
+                commonResponse.status = Helper.failure_code;
+
+            }
+            return Ok(commonResponse);
         }
         
     }
