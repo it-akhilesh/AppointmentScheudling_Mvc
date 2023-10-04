@@ -10,5 +10,6 @@ namespace AppointmentScheudling.Data
         {
 
         }
+        public DbSet<Appointment> Appointments { get; set; }
     }
 }
