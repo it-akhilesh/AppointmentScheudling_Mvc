@@ -21,6 +21,7 @@ namespace AppointmentScheudling.Services
             if(model!=null && model.Id > 0)
             {
                 //update
+                return 1;
             }
             else
             {

@@ -7,7 +7,17 @@ namespace AppointmentScheudling.Utility
         public static string Admin = "Admin";
         public static string Patient = "Patient";
         public static string Doctor = "Doctor";
+        public static string appointmentAdded = "Appointment added successfully.";
+        public static string appointmentUpdated = "Appointment updated successfully.";
+        public static string appointmentDeleted = "Appointment deleted successfully.";
+        public static string appointmentExists = "Appointment for selected date and time alredy exists.";
+        public static string appointmentNoExists = "Appointment not exists.";
 
+        public static string appointmentAddError = "Something went wront, please try again.";
+        public static string appointmentUpdateError = "Something went wront , Please try again.";
+        public static string somethingWentWrong = "Something went wront , Please try again";
+        public static int success_code = 1;
+        public static int failure_code = 0;
         public static List<SelectListItem> GetRolesForDropDown()
         {
             return new List<SelectListItem>
