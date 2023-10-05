@@ -47,33 +47,56 @@ function onCloseModal() {
 }
 
 function onSubmitform() {
-    var requestData = {
-        Id: parseInt($("#id").val()),
-        Title: $("#title").val(),
-        Description: $("#description").val(),
-        StartDate: $("#appointmentDate").val(),
-        Duriation: $("#duration").val(),
-        DoctorId: $("#doctorId").val(),
-        PatientId: $("#patientId").val(),
-    };
+    if (checkValidation())
+    {
+        var requestData = {
+            Id: parseInt($("#id").val()),
+            Title: $("#title").val(),
+            Description: $("#description").val(),
+            StartDate: $("#appointmentDate").val(),
+            Duriation: $("#duration").val(),
+            DoctorId: $("#doctorId").val(),
+            PatientId: $("#patientId").val(),
+        };
 
-    $.ajax({
-        url: routeURL + '/api/Appointment/SaveCalendarDate',
-        type: 'POST',
-        date: JSON.stringify(requestData),
-        contentType: 'application/json',
-        success: function (response) {
-            if (response.status === 1 || response.status === 2) {
-                $.notify(response.message, "sucsess");
-                onCloseModal();
+        $.ajax({
+            url: routeURL + '/api/Appointment/SaveCalendarDate',
+            type: 'POST',
+            date: JSON.stringify(requestData),
+            contentType: 'application/json',
+            success: function (response) {
+                if (response.status === 1 || response.status === 2) {
+                    $.notify(response.message, "sucsess");
+                    onCloseModal();
+                }
+                else {
+                    $.notify(response.message, "error")
+                }
+            },
+            error: function (xhr) {
+                $.notify("Error", "error");
             }
-            else {
-                $.notify(response.message, "error")
-            }
-        },
-        error: function (xhr) {
-            $.notify("Error", "error");
-        }
-    });
-
+        });
+    }   
 } 
+
+function checkValidation() {
+    var isValid = true;
+    if ($("#title").val() === undefined || $("#title").val() === "") {
+        isValid = false;
+        $("#title").addClass('error');
+    }
+    else {
+        $("#title").removeClass('error');
+    }
+
+    if ($("#appointmentDate").val() === undefined || $("#appointmentDate").val() === "") {
+        isValid = false;
+        $("#appointmentDate").addClass('error');
+    }
+    else {
+        $("#appointmentDate").removeClass('error');
+    }
+
+    return isValid;
+}
