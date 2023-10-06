@@ -6,13 +6,14 @@ $(document).ready(function () {
     });
     InitializeCalendar();
 });
+var calendar;
 
 function InitializeCalendar() {
     try {
 
         var calendarEl = document.getElementById('calendar');
         if (calendarEl != null) {
-            var calendar = new FullCalendar.Calendar(calendarEl, {
+            calendar = new FullCalendar.Calendar(calendarEl, {
                 initialView: 'dayGridMonth'
                 headerToolbar:
                 {
@@ -73,7 +74,7 @@ function onShowModal(obj, isEventDetail) {
 
         $("#title").val(obj.title);
         $("#description").val(obj.description);
-        $("#appointmentDate").val(obj.appointmentDate);
+        $("#appointmentDate").val(obj.startDate);
         $("#duration").val(obj.duration);
         $("#doctorId").val(obj.doctorId);
         $("#patientId").val(obj.patientId);
@@ -160,4 +161,7 @@ function getEventDetailsByEventId(info) {
         }
     });
 
+}
+function onDoctorChange() {
+    calendar.refetchEvents();
 }
