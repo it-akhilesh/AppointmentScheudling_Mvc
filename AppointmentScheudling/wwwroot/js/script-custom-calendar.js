@@ -69,6 +69,17 @@ function InitializeCalendar() {
 }
 
 function onShowModal(obj, isEventDetail) {
+    if (isEventDetail != null) {
+
+        $("#title").val(obj.title);
+        $("#description").val(obj.description);
+        $("#appointmentDate").val(obj.appointmentDate);
+        $("#duration").val(obj.duration);
+        $("#doctorId").val(obj.doctorId);
+        $("#patientId").val(obj.patientId);
+        $("#Id").val(obj.id);
+        
+    }
     $("#appointmentInput").modal("show");
 }
 
@@ -76,7 +87,7 @@ function onCloseModal() {
     $("#appointmentInput").modal("hide");
 }
 
-function onSubmitform() {
+function onSubmitForm() {
     if (checkValidation())
     {
         var requestData = {
@@ -84,7 +95,7 @@ function onSubmitform() {
             Title: $("#title").val(),
             Description: $("#description").val(),
             StartDate: $("#appointmentDate").val(),
-            Duriation: $("#duration").val(),
+            Duration: $("#duration").val(),
             DoctorId: $("#doctorId").val(),
             PatientId: $("#patientId").val(),
         };

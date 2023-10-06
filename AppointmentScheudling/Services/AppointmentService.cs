@@ -16,7 +16,7 @@ namespace AppointmentScheudling.Services
         public async Task<int> AddUpdate(AppointmentVM model)
         {
             var startDate = DateTime.Parse(model.StartDate);
-            var endDate = DateTime.Parse(model.StartDate).AddMinutes(Convert.ToDouble(model.Duriation));
+            var endDate = DateTime.Parse(model.StartDate).AddMinutes(Convert.ToDouble(model.Duration));
 
             if(model!=null && model.Id > 0)
             {
@@ -32,7 +32,7 @@ namespace AppointmentScheudling.Services
                     Description = model.Description,
                     StartDate = startDate,
                     EndDate = endDate,
-                    Duriation = model.Duriation,
+                    Duration = model.Duration,
                     DoctorId = model.DoctorId,
                     PatientId = model.PatientId,
                     IsDoctorApproved = false,
@@ -54,7 +54,7 @@ namespace AppointmentScheudling.Services
                 StartDate = c.StartDate.ToString("yyyy-MM-dd HH:mm:ss"),
                 EndDate = c.EndDate.ToString("yyyy-MM-dd HH:mm:ss"),
                 Title = c.Title,
-                Duriation = c.Duriation,
+                Duration = c.Duration,
                 IsDoctorApproved = c.IsDoctorApproved
             }).ToList();
         }
@@ -68,7 +68,7 @@ namespace AppointmentScheudling.Services
                 StartDate = c.StartDate.ToString("yyyy-MM-dd HH:mm:ss"),
                 EndDate = c.EndDate.ToString("yyyy-MM-dd HH:mm:ss"),
                 Title = c.Title,
-                Duriation = c.Duriation,
+                Duration = c.Duration,
                 IsDoctorApproved = c.IsDoctorApproved,
                 PatientId=c.PatientId,
                 DoctorId=c.DoctorId,
@@ -113,7 +113,7 @@ namespace AppointmentScheudling.Services
                 StartDate = c.StartDate.ToString("yyyy-MM-dd HH:mm:ss"),
                 EndDate = c.EndDate.ToString("yyyy-MM-dd HH:mm:ss"),
                 Title = c.Title,
-                Duriation = c.Duriation,
+                Duration = c.Duration,
                 IsDoctorApproved = c.IsDoctorApproved
             }).ToList();
         }
