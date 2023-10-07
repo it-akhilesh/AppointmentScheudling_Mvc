@@ -3,7 +3,15 @@
         <div class="modal-content">
             <form id="apointmentForm" autocomplete="off" novalidate="novalidate">
                 <div class="modal-header">
-                    <h4 class="modal-title">Add/Edit Appointment</h4>
+                    @if(User.IsInRole(AppointmentScheudling.Utility.Helper.Admin))
+                    {
+                        <h4 class="modal-title">Add/Edit Appointment</h4>
+                    }
+                    else
+                    {
+                        <h4 class="modal-title">Appointment Details</h4>
+                    }
+
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
@@ -29,8 +37,21 @@
                     <input type="hidden" id="id"/>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" onclick="onCloseModel();">Close</button>
-                    <button type="button" id="btnSubmit" class="btn btn-success" onclick="onSubmitform();">Submit</button>
+                    <button type="button" class="btn btn-secondary" onclick="onCloseModel();">Close</button> &nbsp;
+
+                    @if (User.IsInRole(AppointmentScheudling.Utility.Helper.Admin))
+                    {
+                        <button type="button" id="btnSubmit" class="btn btn-success" onclick="onSubmitform();">Submit</button>
+                        <button type="button" id="btnDelete" class="btn btn-danger hidden" onclick="onDeleteAppointment();">Delete</button>
+                        
+                    }
+                    @if (User.IsInRole(AppointmentScheudling.Utility.Helper.Doctor))
+                    {
+                        <button type="button" id="btnConfirm" class="btn btn-success" onclick="onConfirm();">Submit</button>
+                        <button type="button" id="btnDelete" class="btn btn-danger hidden" onclick="onDeleteAppointment();">Delete</button>
+
+                    }
+                    
                     
                 </div>
             </form>
