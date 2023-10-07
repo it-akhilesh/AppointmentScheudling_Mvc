@@ -12,7 +12,8 @@ namespace AppointmentScheudling.Utility
         public static string appointmentDeleted = "Appointment deleted successfully.";
         public static string appointmentExists = "Appointment for selected date and time alredy exists.";
         public static string appointmentNoExists = "Appointment not exists.";
-
+        public static string meetingConfirm = "Meeting confirm successfully.";
+        public static string meetingConfirmError = "Error while confirming meeting.";
         public static string appointmentAddError = "Something went wront, please try again.";
         public static string appointmentUpdateError = "Something went wront , Please try again.";
         public static string somethingWentWrong = "Something went wront , Please try again";
