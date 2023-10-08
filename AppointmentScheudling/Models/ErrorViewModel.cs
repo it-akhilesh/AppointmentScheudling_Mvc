@@ -1,3 +1,4 @@
+
 namespace AppointmentScheudling.Models
 {
     public class ErrorViewModel
