@@ -109,7 +109,6 @@ function onCloseModal() {
     $("#description").val('');
     $("#appointmentDate").val('');
     
-
     $("#appointmentInput").modal("hide");
 }
 
