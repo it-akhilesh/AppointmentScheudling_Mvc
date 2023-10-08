@@ -74,10 +74,14 @@ namespace AppointmentScheudling.Controllers
                 if(result.Succeeded)
                 {
                     await _userManager.AddToRoleAsync(user, model.RoleName);
-                    if(result.Succeeded)
+                    if(!User.IsInRole(Helper.Admin))
                     {
                         await _signInManager.SignInAsync(user, isPersistent: false);
 
+                    }
+                    else
+                    {
+                        TempData["newAdminSignUp"] = user.Name;
                     }
                     
                     return RedirectToAction("Index", "Appointment");
