@@ -12,7 +12,7 @@ namespace AppointmentScheudling.Utility
         {
             MailjetClient client = new MailjetClient(Environment.GetEnvironmentVariable("MJ_APIKEY_PUBLIC"), Environment.GetEnvironmentVariable("MJ_APIKEY_PRIVATE"))
             {
-                Version = ApiVersion.V3_1,
+                
             };
 
             MailjetRequest request = new MailjetRequest
@@ -33,14 +33,13 @@ namespace AppointmentScheudling.Utility
                     {
                         new JObject
                         {
-                            {"Email", "passenger1@mailjet.com"},
-                            {"Name","passenger 1"}
+                            {"Email", email},
+                            
                         }
                     } },
-                    {"Subject", "Your email flight plan!"},
-                    {"TextPart", "Dear passenger 1, welcome to Mailjet! May the delivery force be with you!" },
-                    {"HTMLPart", "<h3>Dear passenger 1, welcome to " +
-                    "<a href=\"https://www.mailjet.com/\">Mailjet</a>!</h3><br />May the delivery force be with you!"}
+                    {"Subject", subject},
+                    
+                    {"HTMLPart", htmlMessage}
                     }
             });
             

@@ -1,7 +1,9 @@
 using AppointmentScheudling.Data;
 using AppointmentScheudling.Models;
 using AppointmentScheudling.Services;
+using AppointmentScheudling.Utility;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 
 
@@ -19,6 +21,7 @@ builder.Services.AddTransient<IAppointmentService, AppointmentService>();
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<ApplicationDbContext>();
 
 builder.Services.AddDistributedMemoryCache();
+builder.Services.AddScoped<IEmailSender, EmailSender>();
 builder.Services.AddSession(options =>
 {
     options.IdleTimeout = TimeSpan.FromDays(10);
