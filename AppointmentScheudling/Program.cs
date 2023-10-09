@@ -28,6 +28,10 @@ builder.Services.AddSession(options =>
     options.Cookie.HttpOnly = true;
     options.Cookie.IsEssential = true;
 });
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    options.AccessDeniedPath = new Microsoft.AspNetCore.Http.PathString("Home/AccessDenied");
+});
 builder.Services.AddHttpContextAccessor();
 var app = builder.Build();
 
