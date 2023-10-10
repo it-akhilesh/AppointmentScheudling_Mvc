@@ -22,6 +22,7 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFramework
 
 builder.Services.AddDistributedMemoryCache();
 builder.Services.AddScoped<IEmailSender, EmailSender>();
+builder.Services.AddScoped<IDbInitializer, Db>
 builder.Services.AddSession(options =>
 {
     options.IdleTimeout = TimeSpan.FromDays(10);

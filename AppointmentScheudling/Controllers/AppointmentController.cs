@@ -13,7 +13,7 @@ namespace AppointmentScheudling.Controllers
         {
             _appointmentService = appointmentService;
         }
-        [Authorize(Roles = Helper.Admin)]
+        
         public IActionResult Index()
         {
             ViewBag.Duration = Helper.GetTimeDropDown();
