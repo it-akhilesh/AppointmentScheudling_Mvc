@@ -1,4 +1,5 @@
 using AppointmentScheudling.Data;
+using AppointmentScheudling.DbInitializer;
 using AppointmentScheudling.Models;
 using AppointmentScheudling.Services;
 using AppointmentScheudling.Utility;
@@ -22,7 +23,7 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFramework
 
 builder.Services.AddDistributedMemoryCache();
 builder.Services.AddScoped<IEmailSender, EmailSender>();
-builder.Services.AddScoped<IDbInitializer, Db>
+builder.Services.AddScoped<IDbInitializer, DbInitializer.DbInitializer>();
 builder.Services.AddSession(options =>
 {
     options.IdleTimeout = TimeSpan.FromDays(10);
@@ -38,6 +39,10 @@ var app = builder.Build();
 
 
 // Configure the HTTP request pipeline.
+public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IDbInitializer dbInitializer)
+{
+
+}
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
@@ -52,6 +57,7 @@ app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 app.UseSession();
+DbInitializer.Initalize();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
