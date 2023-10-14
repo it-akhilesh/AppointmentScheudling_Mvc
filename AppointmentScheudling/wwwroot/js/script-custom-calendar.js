@@ -15,7 +15,7 @@ function InitializeCalendar() {
         if (calendarEl != null) {
             calendar = new FullCalendar.Calendar(calendarEl, {
                 initialView: 'dayGridMonth'
-                headerToolbar:
+                headerToolbar: 
                 {
                     left: 'prev,next,today',
                     center: 'title',

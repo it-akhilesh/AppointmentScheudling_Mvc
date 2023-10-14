@@ -1,5 +1,4 @@
 using AppointmentScheudling.Data;
-
 using AppointmentScheudling.Models;
 using AppointmentScheudling.Services;
 using AppointmentScheudling.Utility;
@@ -30,9 +29,11 @@ builder.Services.AddSession(options =>
     options.Cookie.HttpOnly = true;
     options.Cookie.IsEssential = true;
 });
+// CHANGE THE PATH FUNCTION
 builder.Services.ConfigureApplicationCookie(options =>
 {
-    options.AccessDeniedPath = new Microsoft.AspNetCore.Http.PathString("Home/AccessDenied");
+    options.AccessDeniedPath = new Microsoft.AspNetCore.Http.PathString("/Home/AccessDenied");
+    
 });
 builder.Services.AddHttpContextAccessor();
 var app = builder.Build();
