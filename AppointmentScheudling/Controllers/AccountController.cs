@@ -21,7 +21,6 @@ namespace AppointmentScheudling.Controllers
             _userManager = userManager;
             _roleManager = roleManager;
             _signInManager = signInManager;
-
             
         }
 
